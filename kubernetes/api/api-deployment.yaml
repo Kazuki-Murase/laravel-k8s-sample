@@ -1,11 +1,11 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: sample-app
+  name: sample-api
 spec:
   selector:
     matchLabels:
-      app: sample-app
+      app: sample-api
   replicas: 2
   strategy:
     type: RollingUpdate
@@ -15,13 +15,13 @@ spec:
   template:
     metadata:
       labels:
-        app: sample-app
+        app: sample-api
     spec:
       containers:
-      - name: sample-app
+      - name: sample-api
         image: sample-app/app-dev:latest
         envFrom:
         - configMapRef:
-            name: sample-app-config
+            name: sample-api-config
         ports:
-        - containerPort: 80
+        - containerPort: 443

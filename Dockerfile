@@ -29,6 +29,7 @@ RUN php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" \
 ENV COMPOSER_ALLOW_SUPERUSER 1
 
 # setting up apps
+COPY ./tls /etc/tls
 COPY ./nginx.conf /etc/nginx/nginx.conf
 COPY --from=0 /var/laravel /var/www/laravel
 WORKDIR /var/www/laravel
